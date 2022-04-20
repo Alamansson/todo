@@ -56,8 +56,7 @@ func (r *todoListPostgres) GetById(userId, listId int) (todo.TodoList, error) {
 	return list, err
 }
 
-// SELECT tl.id, tl.title, tl.description FROM %s tl
-//								INNER JOIN %s ul on tl.id = ul.list_id WHERE ul.user_id = $1 AND ul.list_id = $2
+
 
 func (r *todoListPostgres) Delete(userId, listId int) error {
 	query := fmt.Sprintf("DELETE FROM %s tl USING %s ul WHERE tl.id=ul.list_id "+
